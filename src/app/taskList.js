@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 class TaskList extends Component{
-    constrcutor(props){
+    constructor(props){
         super(props)
     }
 
