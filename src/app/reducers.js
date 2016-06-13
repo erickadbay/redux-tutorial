@@ -12,7 +12,7 @@ function rootReducer(state = initialState, action){
         case ADD_TASK:
             return addTaskReducer(state, action)
         case COMPLETE_TASK:
-            return state
+            return completeTaskReducer(state, action);
         default:
             return state
 
@@ -21,7 +21,7 @@ function rootReducer(state = initialState, action){
 
 function addTaskReducer(state, action){
     var task = action.payload
-    task.completed = falase
+    task.completed = false
 
     var lastTask = state.tasks[state.tasks.length - 1]
 
@@ -30,11 +30,15 @@ function addTaskReducer(state, action){
     return Object.assign({}, state, {tasks: [...state.tasks, task]})
 }
 
-function completeTaskReducer(state, action){
-    var id = action.payload.id
-    return Object.assign({}, state, {tasks: state.tasks.map(task=>{
-        if (id===task.id){
-            return Object.assign({}, task, {completed: true})
-        }
-    })})
+function completeTaskReducer(state, action) {
+  var id = action.payload.id;
+
+  return Object.assign({}, state, { tasks: state.tasks.map(task => {
+      if(id === task.id) {
+        return Object.assign({}, task, { completed: true });
+      }
+
+      return task;
+    })
+  });
 }

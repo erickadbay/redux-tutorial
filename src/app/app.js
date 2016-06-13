@@ -12,31 +12,32 @@ class App extends Component{
 
     componentDidMount(){
         const{ dispatch } = this.props
-        dispatch (getTask())
+        dispatch (getTasks())
     }
     handleCompleteTask(task){
         const{ dispatch } = this.props
+        console.log('completed task')
         dispatch(completeTask(task.id))
     }
     render(){
         const { dispatch, habits, dailies, todos } = this.props
 
         return(
-            <div>
+            <div className="container">
                 <section>
                     <h3>Habits</h3>
                     <TaskList onCompleteTask={(task)=> this.handleCompleteTask(task)}
-                        tasks={habits}/>
+                        tasks={habits} type="habit"/>
                 </section>
                 <section>
                     <h3>Dailies</h3>
                     <TaskList onCompleteTask={(task)=> this.handleCompleteTask(task)}
-                    tasks={dailies} />
+                    tasks={dailies} type="daily"/>
                 </section>
                 <section>
                     <h3>Todos</h3>
                     <TaskList onCompleteTask={(task)=> this.handleCompleteTask(task)}
-                    tasks={todos} />
+                    tasks={todos} type="todo"/>
                 </section>
             </div>
         )

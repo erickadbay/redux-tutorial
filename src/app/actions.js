@@ -17,7 +17,7 @@ const tasks = [
         id: 3,
         type: 'todo',
         text: 'Finish redux tutorial',
-        completed: false
+        completed: true
     },
     {
         id: 4,
